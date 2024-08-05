@@ -15,7 +15,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
         {{-- DataTables --}}
-        <link href="DataTables/datatables.min.css" rel="stylesheet">
+        <link href="../DataTables/datatables.min.css" rel="stylesheet">
+        <link href="../DataTables/datatables.css" rel="stylesheet">
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
     @show
@@ -32,8 +33,11 @@
 
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-        <script src="DataTables/datatables.min.js"></script>
-        
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+        <script src="../DataTables/datatables.min.js"></script>
+        <script src="../DataTables/datatables.js"></script>
     @show
 </body>
 
