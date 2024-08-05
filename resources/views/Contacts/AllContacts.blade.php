@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('Layouts.Layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Contacts</title>
+@section('title', 'Contacts - All - Xero')
 
-    <link rel="stylesheet" href="../css/style.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-
-<body style="background-color: #F2F3F4;">
+@section('content')
     <nav>
-        @include('Layout/Navigation')
+        @include('Layouts/Navigation')
         <div class="contact-menu">
             <ul class="d-flex justify-content-between">
                 <div class="main-list d-flex">
@@ -32,15 +20,12 @@
                     <button class="btn btn-success me-4">New Contacts</button>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
-
             </ul>
-
-
-
         </div>
     </nav>
+@endsection
 
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+@section('scripts')
+    @parent
+    
+@endsection

@@ -78,8 +78,8 @@
         </li>
 
         <li class="nav-list dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <a href="" class="nav-link" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">Contacts</a>
-            <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+            <a href="" class="nav-link" id="contactsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">Contacts</a>
+            <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
                 <li><a class="dropdown-item" href="all-contacts">All contacts</a></li>
                 <li><a class="dropdown-item" href="#">Customers</a></li>
                 <li><a class="dropdown-item" href="#">Suppliers</a></li>
@@ -133,6 +133,4 @@
             </li>
         </ul>
     </div>
-
-
 </div>

@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('Layouts.Layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounting - Dashboard</title>
+@section('title', 'Dashboard - Xero')
 
-    <link rel="stylesheet" href="../css/style.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-
-<body>
-    <nav>
-        @include('Layout/Navigation')
-    </nav>
-
-
+@section('content')
+    @include('Layouts/Navigation');
     <main>
         <section class="dashboard-section">
             <div class="container">
@@ -198,10 +182,10 @@
             </div>
         </section>
     </main>
+@endsection
 
-
-    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+@section('scripts')
+    @parent
 
     <script>
         var options = {
@@ -291,6 +275,4 @@
 
         chart3.render();
     </script>
-</body>
-
-</html>
+@endsection
