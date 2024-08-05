@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {}
+
+
+
+
+body {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    background-color: #f2f3f4;
+}
+
+img {
+    width: 100%;
+
+}
+
+section {
+    margin: 32px;
+  
+}
+
+
+.navigation .nav-menu {
+    list-style: none;
+    display: flex;
+    margin: 16px;
+}
+
+.navigation .nav-menu .nav-list,
+.navigation .nav-other .dropdown-menus .dropdown-list {
+    margin-right: 32px;
+}
+
+
+.navigation .nav-menu .nav-list,
+.navigation .nav-menu .nav-list a {
+    text-decoration: none;
+    color: #ffff;
+    font-weight: bold;
+}
+
+.nav-menu .nav-list .dropdown-menu li a{
+    color: black;
+    font-weight: 400;
+}
+
+.navigation .nav-other ul {
+    list-style: none;
+    margin: 16px;
+}
+
+.dropdown-item {
+    margin-bottom: 8px;
+}
+
+.dropdown .profile {
+    width: 32px;
+}
+
+.navigation .nav-other .dropdown-menus .dropdown-list i {
+    color: #ffff;
+}
+
+.dropdown-profile .profile-name {
+    font-weight: bold;
+}
+
+.dropdown-profile .profile-name span {
+    font-weight: 400;
+}
+/* card {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+} */
+ 
+.header{
+    color: royalblue;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;   
+    cursor: inherit;
+    display: block;
+}
+
+
+/* Contact Menu */
+.contact-menu ul .contact-list{
+    text-decoration: none;
+}
+
+
