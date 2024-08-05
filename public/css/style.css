@@ -111,14 +111,13 @@ section {
    list-style: none;
    text-decoration: none;
    display: flex;
-   align-items: center;
 }
 
-.contact-menu ul .contact-list{
+.contact-menu ul .contact-list,
+.contact-menu ul .contact-header{
     display: flex;
     align-items: center;
     text-align: center;
-    height: 60px;
     padding: 0;
     margin: 0;
     
@@ -126,13 +125,22 @@ section {
 .contact-menu ul .contact-list a{
     text-decoration: none;
     color: #333;
-    margin-right: 24px;
+    padding: 16px;
+    text-align: center;
    
 }
 
 .contact-menu ul .contact-list:hover{
     background-color: #eee;
 }
+
+.contact-menu .right-list{
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+}
+
+
 
 
 
