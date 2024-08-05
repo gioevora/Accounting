@@ -102,7 +102,7 @@
                 <div class="dropdown">
                     <i class="fa-solid fa-plus" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24"></i>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Invoice</a></li>
+                        <li><a class="dropdown-item" href="/all-contacts">Invoice</a></li>
                         <li><a class="dropdown-item" href="#">Bill</a></li>
                         <li><a class="dropdown-item" href="#">Contact</a></li>
                         <li><a class="dropdown-item" href="#">Quote</a></li>

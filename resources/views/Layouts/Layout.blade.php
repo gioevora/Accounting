@@ -19,6 +19,7 @@
 </head>
 
 <body style="background-color: #F2F3F4;">
+    @include('Layouts/Navigation')
     @section('main')
         @yield('content')
     @show

@@ -4,7 +4,6 @@
 
 @section('content')
     <nav>
-        @include('Layouts/Navigation')
         <div class="contact-menu">
             <ul class="d-flex justify-content-between">
                 <div class="main-list d-flex">

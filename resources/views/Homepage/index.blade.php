@@ -3,7 +3,6 @@
 @section('title', 'Dashboard - Xero')
 
 @section('content')
-    @include('Layouts/Navigation');
     <main>
         <section class="dashboard-section">
             <div class="container">
