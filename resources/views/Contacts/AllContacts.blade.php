@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
-<body>
+<body style="background-color: #F2F3F4;">
     <nav>
         @include('Layout/Navigation')
         <div class="contact-menu">
-            <ul class="d-flex">
-                <li>Contacts</li>
+            <ul class="">
+                <li class="contact-list"><a href="">Contacts</a></li>
                 <li class="contact-list"><a href="#">All</a></li>
                 <li class="contact-list"><a href="#">Customer</a></li>
                 <li class="contact-list"><a href="#">Suppliers</a></li>

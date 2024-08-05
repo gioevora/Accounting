@@ -102,8 +102,40 @@ section {
 
 
 /* Contact Menu */
-.contact-menu ul .contact-list{
-    text-decoration: none;
+.contact-menu{
+    background-color: #f9f9f9; 
+    padding: 0;
+    margin: 0;
 }
+.contact-menu ul{
+   list-style: none;
+   text-decoration: none;
+   display: flex;
+   align-items: center;
+}
+
+.contact-menu ul .contact-list{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    
+}
+.contact-menu ul .contact-list a{
+    text-decoration: none;
+    color: #333;
+    margin-right: 24px;
+   
+}
+
+.contact-menu ul .contact-list:hover{
+    background-color: #eee;
+}
+
+
+
+
 
 
