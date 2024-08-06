@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('number')->nullable();
-            $table->string('picture');
+            $table->string('profile_color');
             $table->string('type')->nullable();
             $table->string('status')->nullable();
             $table->string('phone_country')->nullable();

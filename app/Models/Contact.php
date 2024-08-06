@@ -14,7 +14,7 @@ class Contact extends Model
     protected $fillable = [
         'name',
         'number',
-        'picture',
+        'profile_color',
         'type',
         'status',
         'phone_country',
@@ -39,7 +39,7 @@ class Contact extends Model
         'currency',
     ];
 
-    public function persons(): HasMany
+    public function people(): HasMany
     {
         return $this->hasMany(Person::class);
     }

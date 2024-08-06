@@ -3,6 +3,8 @@
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ContactController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +22,17 @@ Route::get('/', function () {
 
 // Contacts
 Route::prefix('/contacts')->group(function () {
-    Route::get('/all', function () {
-        return view('Contacts/AllContacts');
-    });
+    Route::get('/view', [ContactController::class, 'index']);
+    Route::get('/get-groups', [ContactController::class, 'get_groups']);
+    Route::get('/search/{type}', [ContactController::class, 'search']);
 
-    Route::get('/new', function () {
-        return view('Contacts/NewContacts');
-    });
+    Route::get('/new', [ContactController::class, 'new']);
+    Route::post('/add', [ContactController::class, 'add']);
+
+    Route::get('/edit/{id}', [ContactController::class, 'edit']);
+    Route::get('/get/{id}', [ContactController::class, 'get']);
+
+    Route::post('/archive', [ContactController::class, 'archive']);
 });
 
 // Acctounting

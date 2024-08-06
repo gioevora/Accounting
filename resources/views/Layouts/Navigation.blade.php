@@ -117,7 +117,7 @@
             <li class="dropdown-list"><i class="fa-solid fa-bell"></i></li>
             <li class="dropdown-list">
                 <div class="dropdown">
-                    <img class="profile" src="../img/user.png" w-50 alt="" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">
+                    <img class="profile" src="/img/user.png" w-50 alt="" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">
                     <ul class="dropdown-menu dropdown-profile">
                         <li><a class="dropdown-item profile-name" href="#">Giolo Evora <span class="d-block"><small>Edit Profi</small>le</span></a></li>
                         <li>
