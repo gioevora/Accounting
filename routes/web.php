@@ -31,8 +31,26 @@ Route::prefix('/contacts')->group(function () {
 
 // Acctounting
 Route::prefix('/bank')->group(function () {
-    Route::get('/bank-accounts', function () {
+    Route::get('/accounts', function () {
         return view('Accounting/BankAccounts');
+    });
+
+    Route::get('/new', function () {
+        return view('Accounting/NewBankAccounts');
+    });
+
+    Route::get('/transfer', function () {
+        return view('Accounting/TransferMoney');
+    });
+    Route::get('/rules', function () {
+        return view('Accounting/BankRules');
+    });
+    Route::get('/create-rules', function () {
+        return view('Accounting/CreateRule');
+    });
+
+    Route::get('/chart-accounts', function () {
+        return view('Accounting/ChartAccounts');
     });
 });
 
