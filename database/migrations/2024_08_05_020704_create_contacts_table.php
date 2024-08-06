@@ -33,6 +33,11 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->string('brn')->nullable();
             $table->text('notes')->nullable();
+            $table->string('bank_acc_name')->nullable();
+            $table->string('bank_acc_num')->nullable();
+            $table->string('details')->nullable();
+            $table->string('tax_id_num')->nullable();
+            $table->string('currency');
             $table->timestamps();
         });
     }

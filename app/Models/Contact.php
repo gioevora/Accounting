@@ -32,6 +32,11 @@ class Contact extends Model
         'website',
         'brn',
         'notes',
+        'bank_acc_name',
+        'bank_acc_num',
+        'details',
+        'tax_id_num',
+        'currency',
     ];
 
     public function persons(): HasMany
