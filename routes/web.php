@@ -18,12 +18,22 @@ Route::get('/', function () {
     return view('Homepage/index');
 });
 
-Route::get('/all-contacts', function () {
-    return view('Contacts/AllContacts');
+// Contacts
+Route::prefix('/contacts')->group(function () {
+    Route::get('/all', function () {
+        return view('Contacts/AllContacts');
+    });
+
+    Route::get('/new', function () {
+        return view('Contacts/NewContacts');
+    });
 });
 
-
-Route::get('/new-contacts', function () {
-    return view('Contacts/NewContacts');
+// Acctounting
+Route::prefix('/bank')->group(function () {
+    Route::get('/bank-accounts', function () {
+        return view('Accounting/BankAccounts');
+    });
 });
+
 
