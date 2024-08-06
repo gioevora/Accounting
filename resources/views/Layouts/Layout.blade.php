@@ -17,6 +17,7 @@
         {{-- DataTables --}}
         <link href="../DataTables/datatables.min.css" rel="stylesheet">
         <link href="../DataTables/datatables.css" rel="stylesheet">
+        <link href="../js/select-query/jquery-editable-select.css" rel="stylesheet" media="screen">
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
     @show
@@ -36,8 +37,12 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+
+
         <script src="../DataTables/datatables.min.js"></script>
         <script src="../DataTables/datatables.js"></script>
+
+        <script src="../js/select-query/jquery-editable-select.js"></script>
     @show
 </body>
 
