@@ -22,6 +22,8 @@ $(document).ready(function () {
             processData: false,
             success: function (res) {
                 toastr.success(res.msg);
+                 location.href = `/contacts/view`
+
             },
             error: function (res) {
                 console.log(res)
@@ -52,7 +54,7 @@ $(document).ready(function () {
             method: "POST",
             data: {ids: ids},
             success: function () {
-                location.href = `/contacts/all`
+                location.href = `/contacts/view`
             },
             error: function (res) {
                 console.log(res)
