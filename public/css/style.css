@@ -149,6 +149,17 @@ section {
     margin-top: 24px;
 }
 
+.tbl-div .profile {
+    display: inline;
+    border-radius: 3px;
+    background: #512DA8;
+    padding: 7px;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    margin-right: 7px;
+}
+
 
 
 

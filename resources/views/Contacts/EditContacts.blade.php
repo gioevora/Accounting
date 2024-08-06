@@ -1,6 +1,6 @@
 @extends('Layouts.Layout')
 
-@section('title', 'New Contact - Accounting')
+@section('title', 'Edit Contact - Accounting')
 
 @section('content')
 
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-8 px-0">
-                        <div class="card rounded-0 new-contact">
+                        <div class="card rounded-0 edit-contact">
                             <div class="card-body">
                                 <div class="container">
 
