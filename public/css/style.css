@@ -111,7 +111,7 @@ section {
 .contact-menu ul{
    list-style: none;
    text-decoration: none;
-   display: flex;
+   /* display: flex; */
 }
 
 .contact-menu ul .contact-list,

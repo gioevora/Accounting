@@ -1,5 +1,20 @@
 <div class="navigation bg-primary d-flex justify-content-between align-items-center">
 
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <div class="dropdown">
+            <button class="dropbtn">Dropdown
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+    </div>
+
     <ul class="nav-menu">
         <li class="nav-list"><a href="#">Dashboard</a></li>
         <li class="nav-list dropdown " type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -96,11 +111,14 @@
 
     </ul>
 
+
+
     <div class="nav-other">
         <ul class="dropdown-menus d-flex align-items-center">
             <li class="dropdown-list">
                 <div class="dropdown">
-                    <i class="fa-solid fa-plus" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24"></i>
+                    <i class="fa-solid fa-plus" class="btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24"></i>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/all-contacts">Invoice</a></li>
                         <li><a class="dropdown-item" href="#">Bill</a></li>
@@ -117,9 +135,12 @@
             <li class="dropdown-list"><i class="fa-solid fa-bell"></i></li>
             <li class="dropdown-list">
                 <div class="dropdown">
-                    <img class="profile" src="/img/user.png" w-50 alt="" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">
+                    <img class="profile" src="/img/user.png" w-50 alt=""
+                        class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" data-bs-offset="0,24">
                     <ul class="dropdown-menu dropdown-profile">
-                        <li><a class="dropdown-item profile-name" href="#">Giolo Evora <span class="d-block"><small>Edit Profi</small>le</span></a></li>
+                        <li><a class="dropdown-item profile-name" href="#">Giolo Evora <span
+                                    class="d-block"><small>Edit Profi</small>le</span></a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -127,7 +148,8 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket text-black"></i> Log out</a></li>
+                        <li><a class="dropdown-item" href="#"><i
+                                    class="fa-solid fa-right-from-bracket text-black"></i> Log out</a></li>
                     </ul>
                 </div>
             </li>

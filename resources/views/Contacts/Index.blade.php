@@ -13,15 +13,15 @@
                     <li class="contact-list"><a class="search-btn">Suppliers</a></li>
                     <li class="contact-list"><a class="search-btn">Archived</a></li>
                     <li class="contact-list"><a class="search-btn">Groups</a></li>
-                    {{-- <li>
+                    <li class="contact-list">
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">Groups</button>
+                            <a href="#" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">Groups</a>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Action</a></li>
-                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><a class="dropdown-items" href="#">Action</a></li>
+                              <li><a class="dropdown-items" href="#">Another action</a></li>
                             </ul>
                         </div>
-                    </li> --}}
+                    </li>
                     <li class="contact-list"><a>Smart lists</a></li>
                 </div>
                 <div class="right-list">
