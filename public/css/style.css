@@ -27,13 +27,16 @@ section {
 
 .navigation .nav-menu {
     list-style: none;
-    display: flex;
     margin: 16px;
+}
+
+.navigation .nav-menu .nav-list a{
+    display: flex;
 }
 
 .navigation .nav-menu .nav-list,
 .navigation .nav-other .dropdown-menus .dropdown-list {
-    margin-right: 32px;
+    margin-right: 16px;
 }
 
 
@@ -73,9 +76,7 @@ section {
 .dropdown-profile .profile-name span {
     font-weight: 400;
 }
-/* card {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-} */
+
  
 .header{
     color: royalblue;
@@ -111,7 +112,6 @@ section {
 .contact-menu ul{
    list-style: none;
    text-decoration: none;
-   /* display: flex; */
 }
 
 .contact-menu ul .contact-list,

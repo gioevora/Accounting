@@ -10,8 +10,8 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-12 col-md-8">
                             <div class="bank-account-menu mb-4">
-                                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Bank Account</button>
-                                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Transfer Money</button>
+                                <a href="/bank/new" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Bank Account</a>
+                                <a href="/bank/transfer" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Transfer Money</a>
                                 <button class="btn btn-primary"><i class="fa-solid fa-play"></i> Bank Rules</button>
                                 <button class="btn btn-primary"><i class="fa-solid fa-play"></i> Uncoded Statement Lines</button>
                             </div>

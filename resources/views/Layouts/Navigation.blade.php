@@ -1,114 +1,102 @@
 <div class="navigation bg-primary d-flex justify-content-between align-items-center">
-
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#news">News</a>
-        <div class="dropdown">
-            <button class="dropbtn">Dropdown
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+    <ul class="nav-menu d-flex">
+        <li class="nav-list"><a class="btn border-0" href="/">Dashboard</a></li>
+        <li class="nav-list">
+            <div class="dropdown">
+                <a href="#" class="btn border-0" type="button" data-bs-toggle="dropdown" data-bs-offset="0, 20">Business</a>
+                <ul class="dropdown-menu">
+                    <h6 class="dropdown-header"> <i class="fa-solid fa-chart-simple"></i> Analytics</h6>
+                    <li><a class="dropdown-item" href="/all-contacts">Short-term cash flow</a></li>
+                    <li><a class="dropdown-item" href="#">Business snapshot</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice"></i> Invoices</h6>
+                    <li><a class="dropdown-item" href="#">Online payments</a></li>
+                    <li><a class="dropdown-item" href="#">Quotes</a></li>
+                    <li><a class="dropdown-item" href="#">Sales overview</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Bills to pay</a></li>
+                    <li><a class="dropdown-item" href="#">Purchase orders</a></li>
+                    <li><a class="dropdown-item" href="#">Purchase overview</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Expense claims</a></li>
+                    <li><a class="dropdown-item" href="#">Products and services</a></li>
+                    <li><a class="dropdown-item" href="#">Pay run</a></li>
+                    <li><a class="dropdown-item" href="#">Cheques</a></li>
+                </ul>
             </div>
-        </div>
-    </div>
-
-    <ul class="nav-menu">
-        <li class="nav-list"><a href="#">Dashboard</a></li>
-        <li class="nav-list dropdown " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <a href="#" class="nav-link" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">Business</a>
-            <ul class="dropdown-menu" aria-labelledby="businessDropdown">
-                <h6 class="dropdown-header"> <i class="fa-solid fa-chart-simple"></i> Analytics</h6>
-                <li><a class="dropdown-item" href="/all-contacts">Short-term cash flow</a></li>
-                <li><a class="dropdown-item" href="#">Business snapshot</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice"></i> Invoices</h6>
-                <li><a class="dropdown-item" href="#">Online payments</a></li>
-                <li><a class="dropdown-item" href="#">Quotes</a></li>
-                <li><a class="dropdown-item" href="#">Sales overview</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Bills to pay</a></li>
-                <li><a class="dropdown-item" href="#">Purchase orders</a></li>
-                <li><a class="dropdown-item" href="#">Purchase overview</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Expense claims</a></li>
-                <li><a class="dropdown-item" href="#">Products and services</a></li>
-                <li><a class="dropdown-item" href="#">Pay run</a></li>
-                <li><a class="dropdown-item" href="#">Cheques</a></li>
-            </ul>
         </li>
 
-        <li class="nav-list dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">
-            <a href="#" class="nav-link" id="accountingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">Accounting</a>
-            <ul class="dropdown-menu" aria-labelledby="accountingDropdown">
-                <li><a class="dropdown-item" href="#">Bank accounts</a></li>
-                <li><a class="dropdown-item" href="#">Reports</a></li>
-                <li><a class="dropdown-item" href="#">Advanced</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <h6 class="dropdown-header"><i class="fa-solid fa-file"></i> Reports</h6>
-                <li><a class="dropdown-item" href="#">Account transactions</a></li>
-                <li><a class="dropdown-item" href="#">Aged Payables Summary</a></li>
-                <li><a class="dropdown-item" href="#">Aged Recievables Summary</a></li>
-                <li><a class="dropdown-item" href="#">Balanced Sheet</a></li>
-                <li><a class="dropdown-item" href="#">Profit and Loss</a></li>
-                <li><a class="dropdown-item" href="#">Sales Tax Report</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <h6 class="dropdown-header"><i class="fa-solid fa-star"></i> Advanced</h6>
-                <li><a class="dropdown-item" href="#">Chart of accounts</a></li>
-                <li><a class="dropdown-item" href="#">Find and recode</a></li>
-                <li><a class="dropdown-item" href="#">Fixed assets</a></li>
-                <li><a class="dropdown-item" href="#">Mnaual Journal</a></li>
-            </ul>
-
-
+        <li class="nav-list">
+            <div class="dropdown">
+                <a href="#" class="btn border-0" type="button" data-bs-toggle="dropdown" data-bs-offset="0, 20">Accounting</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/bank/accounts">Bank accounts</a></li>
+                    <li><a class="dropdown-item" href="#">Reports</a></li>
+                    <li><a class="dropdown-item" href="#">Advanced</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-file"></i> Reports</h6>
+                    <li><a class="dropdown-item" href="#">Account transactions</a></li>
+                    <li><a class="dropdown-item" href="#">Aged Payables Summary</a></li>
+                    <li><a class="dropdown-item" href="#">Aged Recievables Summary</a></li>
+                    <li><a class="dropdown-item" href="#">Balanced Sheet</a></li>
+                    <li><a class="dropdown-item" href="#">Profit and Loss</a></li>
+                    <li><a class="dropdown-item" href="#">Sales Tax Report</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-star"></i> Advanced</h6>
+                    <li><a class="dropdown-item" href="bank/chart-accounts">Chart of accounts</a></li>
+                    <li><a class="dropdown-item" href="#">Find and recode</a></li>
+                    <li><a class="dropdown-item" href="#">Fixed assets</a></li>
+                    <li><a class="dropdown-item" href="#">Mnaual Journal</a></li>
+                </ul>
+            </div>
         </li>
 
-        <li class="nav-list dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <a href="#" class="nav-link" id="projectsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">Projects</a>
-            <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
-                <li><a class="dropdown-item" href="#">All projects</a></li>
-                <li><a class="dropdown-item" href="#">Time entries</a></li>
-                <li><a class="dropdown-item" href="#">Staff time overview</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li>
-                    <h6 class="dropdown-header"><i class="fa-solid fa-gear"></i> Projects settings</h6>
-                </li>
-                <li><a class="dropdown-item" href="#">Staff permissions</a></li>
-                <li><a class="dropdown-item" href="#">Staff cost rates</a></li>
-            </ul>
+        <li class="nav-list">
+            <div class="dropdown">
+                <a href="#" class="btn border-0" type="button" data-bs-toggle="dropdown" data-bs-offset="0, 20">Projects</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">All projects</a></li>
+                    <li><a class="dropdown-item" href="#">Time entries</a></li>
+                    <li><a class="dropdown-item" href="#">Staff time overview</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <h6 class="dropdown-header"><i class="fa-solid fa-gear"></i> Projects settings</h6>
+                    </li>
+                    <li><a class="dropdown-item" href="#">Staff permissions</a></li>
+                    <li><a class="dropdown-item" href="#">Staff cost rates</a></li>
+                </ul>
+            </div>
         </li>
-
-        <li class="nav-list dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <a href="" class="nav-link" id="contactsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24">Contacts</a>
-            <ul class="dropdown-menu" aria-labelledby="contactsDropdown">
-                <li><a class="dropdown-item" href="all-contacts">All contacts</a></li>
-                <li><a class="dropdown-item" href="#">Customers</a></li>
-                <li><a class="dropdown-item" href="#">Suppliers</a></li>
-                <li><a class="dropdown-item" href="#">Employees</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li>
-                    <h6 class="dropdown-header"><i class="fa-solid fa-user-group"></i> Groups</h6>
-                </li>
-                <li><a class="dropdown-item" href="#">Training customers</a></li>
-            </ul>
+        <li class="nav-list">
+            <div class="dropdown">
+                <a href="#" class="btn border-0" type="button" data-bs-toggle="dropdown" data-bs-offset="0, 20">Contacts</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="contacts/view">All contacts</a></li>
+                    <li><a class="dropdown-item" href="#">Customers</a></li>
+                    <li><a class="dropdown-item" href="#">Suppliers</a></li>
+                    <li><a class="dropdown-item" href="#">Employees</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <h6 class="dropdown-header"><i class="fa-solid fa-user-group"></i> Groups</h6>
+                    </li>
+                    <li><a class="dropdown-item" href="#">Training customers</a></li>
+                </ul>
+            </div>
         </li>
-
     </ul>
 
 
