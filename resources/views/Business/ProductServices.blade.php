@@ -27,7 +27,7 @@
                             Export
                         </button>
                         <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">CSV</button></li>
+                            <li><button class="dropdown-item" id="printCSV" type="button">CSV</button></li>
                             <li><button class="dropdown-item" type="button">PDF</button></li>
                         </ul>
                     </div>
@@ -254,25 +254,6 @@
     <script>
         $('#purchaseAccount').editableSelect({
             effects: 'slide'
-        });
-    </script>
-
-    <script>
-        new DataTable('#example', {
-            columnDefs: [{
-                render: DataTable.render.select(),
-                targets: 0
-            }],
-            select: {
-                style: 'multi',
-                selector: 'td:first-child',
-
-            },
-            order: [
-                [1, 'asc']
-            ],
-            sort: false,
-            responsive: true,
         });
     </script>
 
