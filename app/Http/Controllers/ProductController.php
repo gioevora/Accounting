@@ -42,6 +42,11 @@ class ProductController extends Controller
         ];
 
         foreach ($request->types as $type) {
+            if($type == "Inventory"){
+               
+                $record->update(['qty' => 0]);
+            }
+            
             $related = new Related();
             foreach ($keys as $key) {
                 if ($key == "item_id") {

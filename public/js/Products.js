@@ -10,15 +10,25 @@ $(document).ready(function () {
             var bool = true
             $('.inventory-categ').show()
         }
-        else{
+        else {
             bool = false
             $('.inventory-categ').hide()
         }
 
-        $('#purchase').prop('checked', bool)
-        $('#purchase').attr('disabled', bool)
-        $('#sell').prop('checked', bool)
-        $('#sell').attr('disabled', bool)
+
+        $('#purchase, #sell').prop('checked', bool).trigger('change')
+        $('#purchase, #sell').attr('disabled', bool).trigger('change')
+    })
+
+    $('#purchase, #sell').on('change', function (e) {
+        var id = $(this).attr('id')
+        console.log(id)
+        if ($(this).prop('checked')) {
+            $(`.${id}-div`).show()
+        }
+        else {
+            $(`.${id}-div`).hide()
+        }
     })
 
     $('.product-form').on('submit', function (e) {
@@ -42,16 +52,38 @@ $(document).ready(function () {
     var dataTable = $('#example').DataTable({
 
         buttons: [
-            'print', 'copy', 'csv', 'pdf',
-
             {
-                extend: 'excelHtml5',
+                extend: 'csvHtml5',
+
+                titleAttr: 'xlsx',
+                title: 'Products List',
                 exportOptions: {
-                    columns: [1, 2,]
+                    columns: [1, 2, 3, 4, 5],
+                },
+                autoFilter: true,
+                sheetName: 'Exported data',
+
+
+            },
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fa fa-file-text-o"></i> CSV',
+                titleAttr: 'pdf',
+                title: 'Products List',
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5],
+                },
+
+                customize: function (doc) {
+                    doc.defaultStyle.fontSize = 8;
+                    doc.styles.tableHeader.fontSize = 10;
+                    doc.content[1].table.widths = ['20%', '20%', '20%', '20%', '20%'];
+                    doc.styles.tableHeader.alignment = 'left';
+                  
                 }
             },
         ],
-        
+
         columnDefs: [{
             render: DataTable.render.select(),
             targets: 0
@@ -68,8 +100,11 @@ $(document).ready(function () {
         responsive: true,
     });
 
-    $('#printCSV').on('click', function() {
+    $('#printCSV').on('click', function () {
         dataTable.button('.buttons-csv').trigger();
+    });
+    $('#printPDF').on('click', function () {
+        dataTable.button('.buttons-pdf').trigger();
     });
 
 });
