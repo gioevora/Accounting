@@ -40,4 +40,37 @@ $(document).ready(function () {
         });
     })
 
+    var dataTable = $('#example').DataTable({
+
+        buttons: [
+            'print', 'copy', 'csv', 'pdf',
+
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: [1, 2,]
+                }
+            },
+        ],
+        
+        columnDefs: [{
+            render: DataTable.render.select(),
+            targets: 0
+        }],
+        select: {
+            style: 'multi',
+            selector: 'td:first-child',
+
+        },
+        order: [
+            [1, 'asc']
+        ],
+        sort: false,
+        responsive: true,
+    });
+
+    $('#printCSV').on('click', function() {
+        dataTable.button('.buttons-csv').trigger();
+    });
+
 });
