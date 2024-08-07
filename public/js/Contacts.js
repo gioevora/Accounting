@@ -23,7 +23,6 @@ $(document).ready(function () {
             success: function (res) {
                 toastr.success(res.msg);
                 location.href = `/contacts/view`
-
             },
             error: function (res) {
                 console.log(res)
@@ -153,17 +152,6 @@ function search(type) {
                 for (var record of records) {
                     var tr = $("<tr>").data("id", record.id)
 
-                    var initials = ""
-                    var name = record.name.split(' ')
-                    for (var word of name) {
-                        initials += word.charAt(0)
-                    }
-
-                    var contact =  `
-                                        <div class='profile' style="background-color: ${record.profile_color};">${initials}</div>
-                                        <span class='fw-bold'>${record.name}</span>
-                                    `
-
                     var action =    `
                                         <div class="d-inline-block text-nowrap">                
                                             <button class="btn" data-bs-toggle="dropdown">
@@ -176,11 +164,34 @@ function search(type) {
                                         </div>
                                     `
 
-                    tr.append($("<td>").html(""))
-                    tr.append($("<td>").html(contact))
-                    tr.append($("<td>").html(null))
-                    tr.append($("<td>").html(null))
-                    tr.append($("<td>").html(action))
+                    var keys = ["checkbox", "contact", "you_owe", "they_owe", "action"]
+
+                    for (var key of keys) {
+                        var html = ""
+                        if (key == 'action') {
+                            html = action
+                        }
+                        else if (key == "checkbox") {
+                            html = ""
+                        }
+                        else if (key == 'contact') {
+                            var initials = ""
+                            var name = record.name.split(' ')
+                            for (var word of name) {
+                                initials += word.charAt(0)
+                            }
+        
+                            html =  `
+                                        <div class='profile' style="background-color: ${record.profile_color};">${initials}</div>
+                                        <span class='fw-bold'>${record.name}</span>
+                                    `
+                        }
+                        else {
+                            html = record[key]
+                        }
+                        tr.append($("<td>").html(html))
+                    }
+
                     tbody.append(tr);
                 }
             } 
