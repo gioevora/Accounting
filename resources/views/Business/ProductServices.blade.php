@@ -121,7 +121,7 @@
                             <input type="hidden" name="type" value="SELL">
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="tracking" type="checkbox" value="" id="tracking">
+                                    <input class="form-check-input" name="" type="checkbox" value="" id="tracking">
                                     <label class="form-check-label" for="tracking">
                                         <h5>Track Inventory Item</h5>
                                     </label>
@@ -140,8 +140,8 @@
                                         <div class="col-4 mb-4">
                                             <div class="form-group">
                                                 <label class="mb-2" for="">Sales Account</label>
-                                                <select id="purchaseAccount" name="type" class="form-control">
-                                                    <option value="630-Inventory" selected>630-Inventory</option>
+                                                <select  name="" class="form-control" value="0">
+                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@
                         <div class="col-12 mb-4">
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="purchase" type="checkbox" value="" id="purchase">
+                                    <input class="form-check-input" name="types[]" type="checkbox" value="Purchase">
                                     <label class="form-check-label" for="purchase">
                                         <h5>Purchase</h5>
                                     </label>
@@ -166,21 +166,20 @@
                         <div class="col-4 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Cost Price</label>
-                                <input type="text" name="costPrice" class="form-control">
+                                <input type="text" name="purchase_price" class="form-control">
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Sales Account</label>
-                                <select id="purchaseAccount" name="purchaseAccount" class="form-control">
-                                    <option value="630-Inventory" selected>630-Inventory</option>
+                                <select id="purchaseAccount" name="purchase_account_id" class="form-control">
                                 </select>
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Sales tax</label>
-                                <select id="slide" name="purchaseTax" class="form-control">
+                                <select id="slide" name="purchase_tax" class="form-control">
                                     <option value="Exempt Sales" selected>Exempt Sales</option>
                                 </select>
                             </div>
@@ -188,14 +187,14 @@
                         <div class="col-12 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Description</label>
-                                <input type="text" name="purchaseDescription" class="form-control">
+                                <input type="text" name="purchase_description" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-12 mb-4">
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="sell" type="checkbox" value="" id="sell">
+                                    <input class="form-check-input" name="types[]" type="checkbox" value="Sell">
                                     <label class="form-check-label" for="sell">
                                         <h5>Sell</h5>
                                     </label>
@@ -206,21 +205,21 @@
                         <div class="col-4 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Cost Price</label>
-                                <input type="text" name="sellCost" class="form-control">
+                                <input type="text" name="sell_price" class="form-control">
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Sales Account</label>
-                                <select id="purchaseAccount" name="sellAccount" class="form-control">
-                                    <option value="630-Inventory" selected>630-Inventory</option>
+                                <select id="purchaseAccount" name="sell_account_id" class="form-control">
+                                
                                 </select>
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Sales tax</label>
-                                <select id="slide" name="sellTax" class="form-control">
+                                <select id="slide" name="sell_tax" class="form-control">
                                     <option value="Exempt Sales" selected>Exempt Sales</option>
                                 </select>
                             </div>
@@ -228,7 +227,7 @@
                         <div class="col-12 mb-4">
                             <div class="form-group">
                                 <label class="mb-2" for="">Description</label>
-                                <input type="text" name="sellDescription" class="form-control">
+                                <input type="text" name="sell_description" class="form-control">
                             </div>
                         </div>
                     </div>

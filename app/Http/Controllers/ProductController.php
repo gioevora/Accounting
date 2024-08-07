@@ -16,17 +16,12 @@ class ProductController extends Controller
             'code' => 'required',
         ]);
 
-
         $record = new Model();
-
-
 
         $keys = [
             'code',
             'name',
         ];
-
-
 
         foreach ($keys as $key) {
             if ($key == " ") {
@@ -37,36 +32,29 @@ class ProductController extends Controller
 
         $record->save();
 
-    
-        $related = new Related();
-
         $keys = [
             'item_id',
             'type',
+            'price',
+            'account_id',
+            'tax',
+            'description',
         ];
 
-        foreach ($keys as $key) {
-            if ($key == "type") {
-                if($request->key == "Inventory"){
-                    $related->save();
+        foreach ($request->types as $type) {
+            $related = new Related();
+            foreach ($keys as $key) {
+                if ($key == "item_id") {
+                    $related->$key = $record->id;
                 }
-                elseif($request->key == "Purchase"){
-                    
-                    $related->save();
+                else {
+                    $req_key = strtolower($type) . "_$key";
+                    $related->$key = $request->$req_key;
                 }
-            } 
-        
-            
-            else {
-                // $related->$key = $request->$key;
             }
+            $related->type = $type;
+            $related->save();
         }
-
-
-       
-
-       
-
 
         return response(['msg' => "Added $this->ent"]);
     }
