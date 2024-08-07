@@ -62,7 +62,7 @@ Route::prefix('/business')->group(function (){
     Route::get('/product', function () {
         return view('Business/ProductServices');
     });
-    
+    Route::get('/search/{type}', [ProductController::class, 'search']);
     Route::post('/add', [ProductController::class, 'add']);
 
 });
