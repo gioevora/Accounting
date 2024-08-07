@@ -50,7 +50,10 @@ Route::prefix('/bank')->group(function () {
     Route::get('/create-rules', [AccountingController::class, 'create_rules']);
 
     Route::get('/chart-accounts', [AccountingController::class, 'chart_accounts']);
+    Route::get('/search/{type}', [AccountingController::class, 'search']);
     Route::post('/add', [AccountingController::class, 'add']);
+    Route::get('/get/{id}', [AccountingController::class, 'get']);
+    Route::post('/update', [AccountingController::class, 'update']);
 });
 
 // Business

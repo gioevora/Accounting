@@ -73,12 +73,15 @@ class AccountingController extends Controller
             'settings',
         ];
 
+        $setting_keys = ['on_dw', 'on_ec', 'payments'];
+
         foreach ($keys as $key) {
             if ($key == "settings") {
-                $setting_keys = ['on_dw', 'on_ec', 'payments'];
-
                 foreach ($setting_keys as $setting_key) {
-                    in_array($setting_key, $request->settings) ? $value = 1 : $value = 0;
+                    if ($request->filled($key)) {
+                        in_array($setting_key, $request->$key) ? $value = 1 : $value = 0;
+                    }
+                    else { $value = 0; }
                     $record->$setting_key = $value;
                 }
             }
@@ -90,5 +93,55 @@ class AccountingController extends Controller
         $record->save();
 
         return response(['msg' => "Added $this->ent"]);
+    }
+
+    public function get($id) {
+        $record = Model::find($id);
+
+        $data = [
+            'record' => $record,
+        ];
+
+        return response($data);
+    }
+
+    public function update(Request $request) {
+        $request->validate([
+            'type' => 'required',
+            'code' => 'required',
+            'name' => 'required',
+        ]);
+
+        $record = Model::find($request->id);
+
+        $keys = [
+            'code',
+            'name',
+            'type',
+            'description',
+            'tax',
+            'settings',
+        ];
+
+        $setting_keys = ['on_dw', 'on_ec', 'payments'];
+
+        foreach ($keys as $key) {
+            if ($key == "settings") {
+                foreach ($setting_keys as $setting_key) {
+                    if ($request->filled($key)) {
+                        in_array($setting_key, $request->$key) ? $value = 1 : $value = 0;
+                    }
+                    else { $value = 0; }
+                    $upd[$setting_key] = $value;
+                }
+            }
+            else {
+                $upd[$key] = $request->$key;
+            }
+        }
+
+        $record->update($upd);
+
+        return response(['msg' => "Updated $this->ent"]);
     }
 }
