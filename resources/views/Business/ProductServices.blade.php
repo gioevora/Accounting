@@ -118,10 +118,9 @@
                         </div>
                         <hr>    
                         <div class="col-12 mb-4">
-                            <input type="hidden" name="type" value="SELL">
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input class="form-check-input" name="" type="checkbox" value="" id="tracking">
+                                    <input class="form-check-input" name="types[]" type="checkbox" value="Inventory" id="tracking">
                                     <label class="form-check-label" for="tracking">
                                         <h5>Track Inventory Item</h5>
                                     </label>
@@ -140,7 +139,7 @@
                                         <div class="col-4 mb-4">
                                             <div class="form-group">
                                                 <label class="mb-2" for="">Sales Account</label>
-                                                <select  name="" class="form-control" value="0">
+                                                <select  name="inventory_account_id" class="form-control">
                                                     
                                                 </select>
                                             </div>
