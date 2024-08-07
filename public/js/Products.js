@@ -31,8 +31,7 @@ $(document).ready(function () {
             processData: false,
             success: function (res) {
                 toastr.success(res.msg);
-                 location.href = `/business/product`
-
+                // location.href = `/business/product`
             },
             error: function (res) {
                 console.log(res)
