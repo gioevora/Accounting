@@ -13,11 +13,11 @@ class Account extends Model
         'code',
         'name',
         'type',
+        'status',
         'description',
         'tax',
         'on_dw',
         'on_ec',
         'payments',
-        'balance',
     ];
 }

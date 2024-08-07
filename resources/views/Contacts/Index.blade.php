@@ -12,13 +12,26 @@
                     <li class="contact-list"><a class="search-btn">Customers</a></li>
                     <li class="contact-list"><a class="search-btn">Suppliers</a></li>
                     <li class="contact-list"><a class="search-btn">Archived</a></li>
-                    <li class="contact-list"><a class="search-btn">Groups</a></li>
                     <li class="contact-list">
                         <div class="dropdown">
-                            <a href="#" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">Groups</a>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-items" href="#">Action</a></li>
-                              <li><a class="dropdown-items" href="#">Another action</a></li>
+                            <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">Groups</a>
+                            <ul class="dropdown-menu groups-div">
+                                <div class="items-div">
+                                    <div class="items">
+
+                                    </div>
+                                    <div>
+                                        <li><a class="new-btn">+ New Group</a></li>
+                                    </div>
+                                </div>
+                                <div class="add-form" style="display: none">
+                                    <button class="back-btn">Back</button>
+                                    <label>Group Name</label>
+                                    <input type="text" name='name'>
+
+                                    <button class="add-btn">Save</button>
+                                    <button class="back-btn">Cancel</button>
+                                </div>
                             </ul>
                         </div>
                     </li>

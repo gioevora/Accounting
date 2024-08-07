@@ -10,22 +10,12 @@ use App\Models\Person;
 use App\Models\Address;
 use App\Models\Group;
 
-class ContactController extends Controller
+class ContactsController extends Controller
 {
     public $ent = 'Contact';
 
     public function index() {
         return view('Contacts/Index');
-    }
-
-    public function get_groups() {
-        $records = Group::all();
-
-        $data = [
-            'records' => $records,
-        ];
-
-        return response($data);
     }
 
     public function search($type) {
@@ -54,6 +44,26 @@ class ContactController extends Controller
         ];
 
         return response($data);
+    }
+
+    public function get_groups() {
+        $records = Group::all();
+
+        $data = [
+            'records' => $records,
+        ];
+
+        return response($data);
+    }
+
+    public function add_group(Request $request) {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $record = new Group();
+        $record->name = $request->name;
+        $record->save();
     }
 
     public function new() {

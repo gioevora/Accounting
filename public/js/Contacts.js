@@ -22,17 +22,13 @@ $(document).ready(function () {
             processData: false,
             success: function (res) {
                 toastr.success(res.msg);
-                 location.href = `/contacts/view`
+                location.href = `/contacts/view`
 
             },
             error: function (res) {
                 console.log(res)
             }
         });
-    })
-
-    $('.new-contact .submit-btn').on('click', function (e) {
-        $('.create-form').submit()
     })
 
     $(document).on("click", ".edit-btn", function () {
@@ -54,13 +50,48 @@ $(document).ready(function () {
             method: "POST",
             data: {ids: ids},
             success: function () {
-                location.href = `/contacts/view`
+                search('all')
             },
             error: function (res) {
                 console.log(res)
             }
         });
     })
+
+    $('.groups-div .new-btn, .groups-div .back-btn').click(function (e) { 
+        var parent = '.groups-div'
+        var class_name = $(this).attr('class')
+
+        if (class_name.startsWith('new')) {
+            $(`${parent} .items-div`).hide()
+            $(`${parent} .add-form`).show()
+        }
+        else {
+            $(`${parent} .items-div`).show()
+            $(`${parent} .add-form`).hide()
+        }
+    });
+
+    $('.groups-div .add-btn').click(function (e) { 
+        var parent = '.groups-div'
+        var name = $(`${parent} input[name=name]`).val()
+
+        $.ajax({
+            url: `/contacts/add-group`,
+            method: "POST",
+            data: {name: name},
+            success: function () {
+                $(`${parent} input[name=name]`).val('')
+                get_groups()
+
+                $(`${parent} .items-div`).show()
+                $(`${parent} .add-form`).hide()
+            },
+            error: function (res) {
+                console.log(res)
+            }
+        });
+    });
 })
 
 var ids = []
@@ -80,7 +111,16 @@ function get_groups() {
         type: "GET",
         url: `/contacts/get-groups`,
         success: function (res) {
-            
+            var items = '.groups-div .items'
+            $(items).empty()
+
+            var records = res.records
+            for (var record of records) {
+                var html =  `
+                                <li><a class="dropdown-items">${record.name}</a></li>
+                            `
+                $(items).append(html)
+            }
         }
     })
 }
