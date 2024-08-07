@@ -3,7 +3,8 @@
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactsController;
+use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -23,42 +24,33 @@ Route::get('/', function () {
 
 // Contacts
 Route::prefix('/contacts')->group(function () {
-    Route::get('/view', [ContactController::class, 'index']);
-    Route::get('/get-groups', [ContactController::class, 'get_groups']);
-    Route::get('/search/{type}', [ContactController::class, 'search']);
+    Route::get('/view', [ContactsController::class, 'index']);
+    Route::get('/search/{type}', [ContactsController::class, 'search']);
 
-    Route::get('/new', [ContactController::class, 'new']);
-    Route::post('/add', [ContactController::class, 'add']);
+    Route::get('/get-groups', [ContactsController::class, 'get_groups']);
+    Route::post('/add-group', [ContactsController::class, 'add_group']);
 
-    Route::get('/edit/{id}', [ContactController::class, 'edit']);
-    Route::get('/get/{id}', [ContactController::class, 'get']);
+    Route::get('/new', [ContactsController::class, 'new']);
+    Route::post('/add', [ContactsController::class, 'add']);
 
-    Route::post('/archive', [ContactController::class, 'archive']);
+    Route::get('/edit/{id}', [ContactsController::class, 'edit']);
+    Route::get('/get/{id}', [ContactsController::class, 'get']);
+
+    Route::post('/archive', [ContactsController::class, 'archive']);
 });
 
 // Acctounting
 Route::prefix('/bank')->group(function () {
-    Route::get('/accounts', function () {
-        return view('Accounting/BankAccounts');
-    });
+    Route::get('/accounts', [AccountingController::class, 'accounts']);
+    Route::get('/new', [AccountingController::class, 'new']);
 
-    Route::get('/new', function () {
-        return view('Accounting/NewBankAccounts');
-    });
+    Route::get('/transfer', [AccountingController::class, 'transfer']);
 
-    Route::get('/transfer', function () {
-        return view('Accounting/TransferMoney');
-    });
-    Route::get('/rules', function () {
-        return view('Accounting/BankRules');
-    });
-    Route::get('/create-rules', function () {
-        return view('Accounting/CreateRule');
-    });
+    Route::get('/rules', [AccountingController::class, 'rules']);
+    Route::get('/create-rules', [AccountingController::class, 'create_rules']);
 
-    Route::get('/chart-accounts', function () {
-        return view('Accounting/ChartAccounts');
-    });
+    Route::get('/chart-accounts', [AccountingController::class, 'chart_accounts']);
+    Route::post('/add', [AccountingController::class, 'add']);
 });
 
 // Business

@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('type');
+            $table->string('status')->nullable();
             $table->text('description')->nullable();
             $table->string('tax');
             $table->boolean('on_dw');
             $table->boolean('on_ec');
             $table->boolean('payments');
-            $table->decimal('balance', 15, 2);
             $table->timestamps();
         });
     }
