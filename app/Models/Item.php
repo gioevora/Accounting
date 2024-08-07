@@ -12,6 +12,7 @@ class Item extends Model
     protected $fillable = [
         'code',
         'name',
-        'account_id',
+        'status',
+        'qty'
     ];
 }

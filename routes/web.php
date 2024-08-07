@@ -4,6 +4,7 @@ use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,17 @@ Route::prefix('/bank')->group(function () {
     Route::get('/chart-accounts', function () {
         return view('Accounting/ChartAccounts');
     });
+});
+
+// Business
+
+Route::prefix('/business')->group(function (){
+    Route::get('/product', function () {
+        return view('Business/ProductServices');
+    });
+    
+    Route::post('/add', [ProductController::class, 'add']);
+
 });
 
 

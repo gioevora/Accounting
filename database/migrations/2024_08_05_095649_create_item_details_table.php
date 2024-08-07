@@ -18,9 +18,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Item::class);
             $table->string('type');
-            $table->decimal('price', 15, 2);
-            $table->foreignIdFor(Account::class);
-            $table->string('tax');
+            $table->decimal('price', 15, 2)->nullable();
+            $table->foreignIdFor(Account::class)->nullable();
+            $table->string('tax')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

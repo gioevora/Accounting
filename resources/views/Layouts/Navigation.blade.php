@@ -25,7 +25,7 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item" href="#">Expense claims</a></li>
-                    <li><a class="dropdown-item" href="#">Products and services</a></li>
+                    <li><a class="dropdown-item" href="/business/product">Products and services</a></li>
                     <li><a class="dropdown-item" href="#">Pay run</a></li>
                     <li><a class="dropdown-item" href="#">Cheques</a></li>
                 </ul>
@@ -53,7 +53,7 @@
                         <hr class="dropdown-divider">
                     </li>
                     <h6 class="dropdown-header"><i class="fa-solid fa-star"></i> Advanced</h6>
-                    <li><a class="dropdown-item" href="bank/chart-accounts">Chart of accounts</a></li>
+                    <li><a class="dropdown-item" href="/bank/chart-accounts">Chart of accounts</a></li>
                     <li><a class="dropdown-item" href="#">Find and recode</a></li>
                     <li><a class="dropdown-item" href="#">Fixed assets</a></li>
                     <li><a class="dropdown-item" href="#">Mnaual Journal</a></li>
@@ -83,7 +83,7 @@
             <div class="dropdown">
                 <a href="#" class="btn border-0" type="button" data-bs-toggle="dropdown" data-bs-offset="0, 20">Contacts</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="contacts/view">All contacts</a></li>
+                    <li><a class="dropdown-item" href="/contacts/view">All contacts</a></li>
                     <li><a class="dropdown-item" href="#">Customers</a></li>
                     <li><a class="dropdown-item" href="#">Suppliers</a></li>
                     <li><a class="dropdown-item" href="#">Employees</a></li>
