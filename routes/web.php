@@ -41,6 +41,7 @@ Route::prefix('/contacts')->group(function () {
     Route::post('/archive', [ContactsController::class, 'archive']);
 });
 
+
 // Acctounting
 Route::prefix('/bank')->group(function () {
     Route::get('/accounts', [AccountingController::class, 'accounts']);
@@ -59,11 +60,15 @@ Route::prefix('/bank')->group(function () {
 });
 
 // Business
-
 Route::prefix('/business')->group(function (){
     Route::get('/product', function () {
         return view('Business/ProductServices');
     });
+
+    Route::get('/invoices', function () {
+        return view('Business/Invoices');
+    });
+
     Route::get('/search/{type}', [ProductController::class, 'search']);
     Route::post('/add', [ProductController::class, 'add']);
 
