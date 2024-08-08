@@ -18,13 +18,10 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-
-
 Route::get('/', function () {
     return view('Homepage/index');
 });
 
-// Contacts
 Route::prefix('/contacts')->group(function () {
     Route::get('/view', [ContactsController::class, 'index']);
     Route::get('/search/{type}', [ContactsController::class, 'search']);
@@ -41,7 +38,6 @@ Route::prefix('/contacts')->group(function () {
     Route::post('/archive', [ContactsController::class, 'archive']);
 });
 
-// Acctounting
 Route::prefix('/bank')->group(function () {
     Route::get('/accounts', [AccountingController::class, 'accounts']);
     Route::get('/new', [AccountingController::class, 'new']);
@@ -58,15 +54,14 @@ Route::prefix('/bank')->group(function () {
     Route::post('/update', [AccountingController::class, 'update']);
 });
 
-// Business
-
 Route::prefix('/business')->group(function (){
-    Route::get('/product', function () {
-        return view('Business/ProductServices');
-    });
-    Route::get('/search/{type}', [ProductController::class, 'search']);
+    Route::get('/product', [ProductController::class, 'index']);
+    Route::get('/all', [ProductController::class, 'all']);
     Route::post('/add', [ProductController::class, 'add']);
-
+    Route::get('/get/{id}', [ProductController::class, 'get']);
+    Route::post('/update', [ProductController::class, 'update']);
+    Route::post('/archive', [ProductController::class, 'archive']);
+    Route::post('/delete', [ProductController::class, 'delete']);
 });
 
 

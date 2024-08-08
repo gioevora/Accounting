@@ -10,6 +10,21 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public $ent = 'Product';
+
+    public function index() {
+        return view('Business/ProductServices');
+    }
+
+    public function all() {
+        $records = Model::where('status', Null)->get();
+
+        $data = [
+            'records' => $records,
+        ];
+
+        return response($data);
+    }
+
     public function add(Request $request)
     {
         $request->validate([
@@ -44,7 +59,7 @@ class ProductController extends Controller
         foreach ($request->types as $type) {
             if($type == "Inventory"){
                
-                $record->update(['qty' => 0]);
+                $record->update(['quantity' => 0]);
             }
             
             $related = new Related();
@@ -62,5 +77,52 @@ class ProductController extends Controller
         }
 
         return response(['msg' => "Added $this->ent"]);
+    }
+
+    public function get($id) {
+        $record = Model::find($id)->with('item_details')->first();
+
+        $data = [
+            'record' => $record,
+        ];
+
+        return response($data);
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'code' => 'required',
+        ]);
+
+        $record = Model::find($request->id);
+
+        $keys = [
+            'code',
+            'name',
+        ];
+
+        foreach ($keys as $key) {
+            if ($key == " ") {
+            } else {
+                $upd[$key] = $request->$key;
+            }
+        }
+
+        $record->update($upd);
+
+        return response(['msg' => "Updated $this->ent"]);
+    }
+
+    public function archive(Request $request) {
+        $ids = $request->ids;
+        $records = Model::whereIn('id', $ids)->update(['status' => 'Archived']);
+        return response(['msg' => "Archived $this->ent"."s"]);
+    }
+
+    public function delete(Request $request) {
+        $ids = $request->ids;
+        $records = Model::whereIn('id', $ids)->delete();
+        return response(['msg' => "Deleted $this->ent"."s"]);
     }
 }

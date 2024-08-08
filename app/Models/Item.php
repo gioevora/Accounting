@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Item extends Model
 {
     use HasFactory;
@@ -13,6 +15,11 @@ class Item extends Model
         'code',
         'name',
         'status',
-        'qty'
+        'quantity'
     ];
+
+    public function item_details(): HasMany
+    {
+        return $this->hasMany(ItemDetail::class);
+    }
 }

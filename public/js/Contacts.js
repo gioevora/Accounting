@@ -152,6 +152,9 @@ function search(type) {
                 for (var record of records) {
                     var tr = $("<tr>").data("id", record.id)
 
+                    var keys = ["checkbox", "contact", "you_owe", "they_owe", "action"]
+
+                    
                     var action =    `
                                         <div class="d-inline-block text-nowrap">                
                                             <button class="btn" data-bs-toggle="dropdown">
@@ -163,8 +166,6 @@ function search(type) {
                                             </div>
                                         </div>
                                     `
-
-                    var keys = ["checkbox", "contact", "you_owe", "they_owe", "action"]
 
                     for (var key of keys) {
                         var html = ""

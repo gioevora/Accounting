@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('name')->nullable();
             $table->string('status')->nullable();
-            $table->double('qty', 10,2)->nullable();
+            $table->double('quantity', 10,2)->nullable();
             $table->timestamps();
         });
     }
