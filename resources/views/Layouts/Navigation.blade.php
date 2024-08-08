@@ -12,6 +12,7 @@
                         <hr class="dropdown-divider">
                     </li>
                     <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice"></i> Invoices</h6>
+                    <li><a class="dropdown-item" href="#">Invoices</a></li>
                     <li><a class="dropdown-item" href="#">Online payments</a></li>
                     <li><a class="dropdown-item" href="#">Quotes</a></li>
                     <li><a class="dropdown-item" href="#">Sales overview</a></li>
@@ -109,7 +110,7 @@
                     <i class="fa-solid fa-plus" class="btn btn-secondary dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,24"></i>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/all-contacts">Invoice</a></li>
+                        <li><a class="dropdown-item" href="/business/invoices">Invoice</a></li>
                         <li><a class="dropdown-item" href="#">Bill</a></li>
                         <li><a class="dropdown-item" href="#">Contact</a></li>
                         <li><a class="dropdown-item" href="#">Quote</a></li>

@@ -38,6 +38,7 @@ Route::prefix('/contacts')->group(function () {
     Route::post('/archive', [ContactsController::class, 'archive']);
 });
 
+
 Route::prefix('/bank')->group(function () {
     Route::get('/accounts', [AccountingController::class, 'accounts']);
     Route::get('/new', [AccountingController::class, 'new']);
@@ -54,8 +55,15 @@ Route::prefix('/bank')->group(function () {
     Route::post('/update', [AccountingController::class, 'update']);
 });
 
+// Business
+
 Route::prefix('/business')->group(function (){
     Route::get('/product', [ProductController::class, 'index']);
+
+    Route::get('/invoices', function () {
+        return view('Business/Invoices');
+    });
+
     Route::get('/all', [ProductController::class, 'all']);
     Route::post('/add', [ProductController::class, 'add']);
     Route::get('/get/{id}', [ProductController::class, 'get']);
