@@ -12,17 +12,17 @@ $(document).ready(function () {
         search(type)
     });
 
-    $('.create-form').on('submit', function (e) {
+    $('.add-form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
-            url: `/contacts/add`,
+            url: `/api/contacts/add`,
             method: "POST",
             data: new FormData(this),
             contentType: false,
             processData: false,
             success: function (res) {
                 toastr.success(res.msg);
-                location.href = `/contacts/view`
+                location.href = `/contacts`
             },
             error: function (res) {
                 console.log(res)
@@ -45,7 +45,7 @@ $(document).ready(function () {
         ids[0] = id
 
         $.ajax({
-            url: `/contacts/archive`,
+            url: `/api/contacts/archive`,
             method: "POST",
             data: {ids: ids},
             success: function () {
@@ -57,33 +57,33 @@ $(document).ready(function () {
         });
     })
 
-    $('.groups-div .new-btn, .groups-div .back-btn').click(function (e) { 
-        var parent = '.groups-div'
+    $('.groups-drop .new-btn, .groups-drop .back-btn').click(function (e) { 
+        var parent = '.groups-drop'
         var class_name = $(this).attr('class')
 
         if (class_name.startsWith('new')) {
-            $(`${parent} .items-div`).hide()
+            $(`${parent} .container`).hide()
             $(`${parent} .add-form`).show()
         }
         else {
-            $(`${parent} .items-div`).show()
+            $(`${parent} .container`).show()
             $(`${parent} .add-form`).hide()
         }
     });
 
-    $('.groups-div .add-btn').click(function (e) { 
-        var parent = '.groups-div'
+    $('.groups-drop .add-btn').click(function (e) { 
+        var parent = '.groups-drop'
         var name = $(`${parent} input[name=name]`).val()
 
         $.ajax({
-            url: `/contacts/add-group`,
+            url: `/api/groups/add`,
             method: "POST",
             data: {name: name},
             success: function () {
                 $(`${parent} input[name=name]`).val('')
-                get_groups()
+                all_groups()
 
-                $(`${parent} .items-div`).show()
+                $(`${parent} .container`).show()
                 $(`${parent} .add-form`).hide()
             },
             error: function (res) {
@@ -96,32 +96,14 @@ $(document).ready(function () {
 var ids = []
 
 function start() {
-    var url_segments = location.href.split('/')
-    var page = url_segments[4]
-    if (page == 'view') { 
-        get_groups()
-        search('all') 
+    var segments = location.href.split('/')
+    if (segments[4] == "edit") {
+        edit(segments[5])
     }
-    else if (page == 'edit') { get(url_segments[5]) }
-}
-
-function get_groups() {
-    $.ajax({
-        type: "GET",
-        url: `/contacts/get-groups`,
-        success: function (res) {
-            var items = '.groups-div .items'
-            $(items).empty()
-
-            var records = res.records
-            for (var record of records) {
-                var html =  `
-                                <li><a class="dropdown-items">${record.name}</a></li>
-                            `
-                $(items).append(html)
-            }
-        }
-    })
+    else {
+        all_groups()
+        search('all')
+    }
 }
 
 function search(type) {
@@ -129,7 +111,7 @@ function search(type) {
 
     $.ajax({
         type: "GET",
-        url: `/contacts/search/${type}`,
+        url: `/api/contacts/search/${type}`,
         success: function (res) {
             var records = res.records;
             console.log(records)
@@ -221,10 +203,10 @@ function search(type) {
     });
 }
 
-function get(id) {
+function edit(id) {
     $.ajax({
         type: "GET",
-        url: `/contacts/get/${id}`,
+        url: `/api/contacts/edit/${id}`,
         success: function (res) {
             var record = res.record;
             console.log(record)
@@ -252,20 +234,39 @@ function get(id) {
                 'details',
                 'tax_id_num',
                 'currency',
-                'last_name',
-                'first_name',
-                'email',
+                'people',
             ]
 
-            var person_keys = ['last_name', 'first_name', 'email']
+            var p_keys = ['last_name', 'first_name', 'email']
 
             for (var key of keys) {
-                if (person_keys.includes(key)) {
-                    $(`.edit-contact input[name=${key}]`).val(record['people'][0][key]);
+                if (key == 'people' && record[key].length > 0) {
+                    for (var p_key of p_keys) {
+                        $(`.edit-form input[name=${p_key}]`).val(record[key][0][p_key]);
+                    }
                 }
                 else {
-                    $(`.edit-contact input[name=${key}], .edit-contact select[name=${key}]`).val(record[key]);
+                    $(`.edit-form input[name=${key}], .edit-form select[name=${key}]`).val(record[key]);
                 }
+            }
+        }
+    })
+}
+
+function all_groups() {
+    $.ajax({
+        type: "GET",
+        url: `/api/groups/all`,
+        success: function (res) {
+            var items = '.groups-drop .items'
+            $(items).empty()
+
+            var records = res.records
+            for (var record of records) {
+                var html =  `
+                                <li><a class="dropdown-items">${record.name}</a></li>
+                            `
+                $(items).append(html)
             }
         }
     })

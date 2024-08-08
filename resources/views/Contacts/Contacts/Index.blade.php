@@ -15,8 +15,8 @@
                     <li class="contact-list">
                         <div class="dropdown">
                             <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">Groups</a>
-                            <ul class="dropdown-menu groups-div">
-                                <div class="items-div">
+                            <ul class="dropdown-menu groups-drop">
+                                <div class="container">
                                     <div class="items">
 
                                     </div>
@@ -25,12 +25,12 @@
                                     </div>
                                 </div>
                                 <div class="add-form" style="display: none">
-                                    <button class="back-btn">Back</button>
+                                    <button class="btn btn-secondary mb-3 back-btn">Back</button>
                                     <label>Group Name</label>
                                     <input type="text" name='name'>
 
-                                    <button class="add-btn">Save</button>
-                                    <button class="back-btn">Cancel</button>
+                                    <button class="btn btn-primary add-btn">Save</button>
+                                    <button class="btn btn-secondary back-btn">Cancel</button>
                                 </div>
                             </ul>
                         </div>
@@ -38,8 +38,9 @@
                     <li class="contact-list"><a>Smart lists</a></li>
                 </div>
                 <div class="right-list">
-                    <button class="btn btn-success me-4"><a href="/contacts/new"
-                            style="color:#ffff; text-decoration:none;">New Contacts</a></button>
+                    <button class="btn btn-success me-4">
+                        <a href="/contacts/add" class="text-light text-decoration-none">New Contacts</a>
+                    </button>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </ul>
@@ -47,7 +48,6 @@
     </nav>
 
     <main>
-
         <section class="contacts-section">
             <div class="container">
                 <div class="card">
@@ -57,9 +57,7 @@
                 </div>
                
             </div>
-        </section>
-
-       
+        </section> 
     </main>
 
 @endsection

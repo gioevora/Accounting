@@ -4,14 +4,14 @@ $(document).ready(function () {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
     })
-
+    
     start()
 
-    $('.create-form').on('submit', function (e) {
+    $('.add-form').on('submit', function (e) {
         e.preventDefault();
 
         $.ajax({
-            url: `/bank/add`,
+            url: `/api/accounts/add`,
             method: "POST",
             data: new FormData(this),
             contentType: false,
@@ -19,36 +19,62 @@ $(document).ready(function () {
             success: function (res) {
                 toastr.success(res.msg);
                 search('all')
-                $(`.create-form`).trigger("reset");
-                $(`.new-account-modal`).modal("hide");
+        
+                $(`.add-form`).trigger("reset");
+                $(`.add-div`).modal("hide");
             },
             error: function (res) {
                 console.log(res)
             }
         });
     })
-    
+
+    $('.edit-form').on('submit', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: `/api/accounts/update`,
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                toastr.success(res.msg);
+                search('all')
+
+                $(`.edit-form`).trigger("reset");
+                $(`.edit-div`).modal("hide");
+            },
+            error: function (res) {
+                console.log(res)
+            }
+        });
+    })
+
     $(document).on("click", "tr", function () {
         var id = ""
         $(this).data('id') == undefined ? id = $(this).prev().data('id') : id = $(this).data('id')
 
         $(".edit-form input[name=id]").val(id);
-        $('.edit-account-modal').modal('show')
+        $('.edit-div').modal('show')
 
         $.ajax({
             type: "GET",
-            url: `/bank/get/${id}`,
+            url: `/api/accounts/edit/${id}`,
             success: function (res) {
                 var record = res.record;
-                var keys = ["code", "name", "type", "tax", "on_dw", "on_ec", "payments"];
 
-                var settings_keys = ["on_dw", "on_ec", "payments"]
+                var keys = ["code", "name", "type", "tax", "settings"];
+                var s_keys = ["on_dw", "on_ec", "payments"]
+
                 var checked = []
 
                 for (var key of keys) {
-                    if (settings_keys.includes(key)) {
-                        if (record[key] == 1) { checked.push(key) }
-                        $(`.edit-form input[name='settings[]']`).val(checked) 
+                    if (key == 'settings') {
+                        for (var s_key of s_keys) {
+                            if (record[s_key] == 1) { checked.push(s_key) }
+                        }
+                        $(`.edit-form input[name='${key}[]']`).val(checked) 
                     }
                     else {
                         $(`.edit-form input[name=${key}], .edit-form select[name=${key}]`).val(record[key]);
@@ -60,27 +86,6 @@ $(document).ready(function () {
             }
         })
     })
-
-    $('.edit-form').on('submit', function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: `/bank/update`,
-            method: "POST",
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            success: function (res) {
-                toastr.success(res.msg);
-                search('all')
-                $(`.edit-form`).trigger("reset");
-                $(`.edit-account-modal`).modal("hide");
-            },
-            error: function (res) {
-                console.log(res)
-            }
-        });
-    })
-
 })
 
 function start() {
@@ -92,7 +97,7 @@ function search(type) {
 
     $.ajax({
         type: "GET",
-        url: `/bank/search/${type}`,
+        url: `/api/accounts/search/${type}`,
         success: function (res) {
             var records = res.records;
             console.log(records)

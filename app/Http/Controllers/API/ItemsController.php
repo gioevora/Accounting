@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use App\Models\Item as Model;
 use App\Models\ItemDetail as Related;
 
-use Illuminate\Http\Request;
-
-class ProductController extends Controller
+class ItemsController extends Controller
 {
-    public $ent = 'Product';
-
-    public function index() {
-        return view('Business/ProductServices');
-    }
+    public $model = 'Item';
 
     public function all() {
         $records = Model::where('status', Null)->get();
@@ -40,7 +37,9 @@ class ProductController extends Controller
 
         foreach ($keys as $key) {
             if ($key == " ") {
-            } else {
+
+            } 
+            else {
                 $record->$key = $request->$key;
             }
         }
@@ -57,8 +56,7 @@ class ProductController extends Controller
         ];
 
         foreach ($request->types as $type) {
-            if($type == "Inventory"){
-               
+            if ($type == "Inventory") {
                 $record->update(['quantity' => 0]);
             }
             
@@ -76,10 +74,10 @@ class ProductController extends Controller
             $related->save();
         }
 
-        return response(['msg' => "Added $this->ent"]);
+        return response(['msg' => "Added $this->model"]);
     }
 
-    public function get($id) {
+    public function edit($id) {
         $record = Model::find($id)->with('item_details')->first();
 
         $data = [
@@ -104,25 +102,27 @@ class ProductController extends Controller
 
         foreach ($keys as $key) {
             if ($key == " ") {
-            } else {
+
+            } 
+            else {
                 $upd[$key] = $request->$key;
             }
         }
 
         $record->update($upd);
 
-        return response(['msg' => "Updated $this->ent"]);
+        return response(['msg' => "Updated $this->model"]);
     }
 
     public function archive(Request $request) {
         $ids = $request->ids;
         $records = Model::whereIn('id', $ids)->update(['status' => 'Archived']);
-        return response(['msg' => "Archived $this->ent"."s"]);
+        return response(['msg' => "Archived $this->model"."s"]);
     }
 
     public function delete(Request $request) {
         $ids = $request->ids;
         $records = Model::whereIn('id', $ids)->delete();
-        return response(['msg' => "Deleted $this->ent"."s"]);
+        return response(['msg' => "Deleted $this->model"."s"]);
     }
 }

@@ -7,36 +7,11 @@ $(document).ready(function () {
 
     start()
 
-    $('#tracking').on('change', function (e) {
-        if ($(this).prop('checked')) {
-            var bool = true
-            $('.inventory-categ').show()
-        }
-        else {
-            bool = false
-            $('.inventory-categ').hide()
-        }
-
-
-        $('#purchase, #sell').prop('checked', bool).trigger('change')
-        $('#purchase, #sell').attr('disabled', bool).trigger('change')
-    })
-
-    $('#purchase, #sell').on('change', function (e) {
-        var id = $(this).attr('id')
-  
-        if ($(this).prop('checked')) {
-            $(`.${id}-div`).show()
-        }
-        else {
-            $(`.${id}-div`).hide()
-        }
-    })
-
-    $('.create-form').on('submit', function (e) {
+    $('.add-form').on('submit', function (e) {
         e.preventDefault();
+
         $.ajax({
-            url: `/business/add`,
+            url: `/api/items/add`,
             method: "POST",
             data: new FormData(this),
             contentType: false,
@@ -44,8 +19,31 @@ $(document).ready(function () {
             success: function (res) {
                 toastr.success(res.msg);
                 all()
-                $('.create-form').trigger('reset')
-                $('.new-product-modal').modal('hide')
+
+                $('.add-form').trigger('reset')
+                $('.add-div').modal('hide')
+            },
+            error: function (res) {
+                console.log(res)
+            }
+        });
+    })
+
+    $('.edit-form').on('submit', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: `/api/items/update`,
+            method: "POST",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                toastr.success(res.msg);
+                all()
+
+                $(`.edit-form`).trigger("reset");
+                $(`.edit-div`).modal("hide");
             },
             error: function (res) {
                 console.log(res)
@@ -59,23 +57,23 @@ $(document).ready(function () {
         tr.data('id') == undefined ? id = tr.prev().data('id') : id = tr.data('id')
 
         $(".edit-form input[name=id]").val(id);
-        $('.edit-product-modal').modal('show')
+        $('.edit-div').modal('show')
 
         $.ajax({
             type: "GET",
-            url: `/business/get/${id}`,
+            url: `/api/items/edit/${id}`,
             success: function (res) {
-                console.log(res)
                 var record = res.record;
+
                 var keys = ["code", "name", "item_details"];
-                var detail_keys = ["price", "account_id", "tax", "description"]
+                var d_keys = ["price", "account_id", "tax", "description"]
 
                 for (var key of keys) {
                     if (key == 'item_details') {
                         for (var detail of record[key]) {
                             var type = detail['type'].toLowerCase()
-                            for (var detail_key of detail_keys) {
-                                $(`.edit-form input[name=${type}_${detail_key}]`).val(detail[detail_key]);
+                            for (var d_key of d_keys) {
+                                $(`.edit-form input[name=${type}_${d_key}]`).val(detail[d_key]);
                             }
                         }
                     }
@@ -90,26 +88,6 @@ $(document).ready(function () {
         })
     })
 
-    $('.edit-form').on('submit', function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: `/business/update`,
-            method: "POST",
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            success: function (res) {
-                toastr.success(res.msg);
-                all()
-                $(`.edit-form`).trigger("reset");
-                $(`.edit-product-modal`).modal("hide");
-            },
-            error: function (res) {
-                console.log(res)
-            }
-        });
-    })
-
     $(document).on("click", ".archive-btn", function () {
         var tr = $(this).closest('tr')
         var id = ""
@@ -117,7 +95,7 @@ $(document).ready(function () {
         ids[0] = id
 
         $.ajax({
-            url: `/business/archive`,
+            url: `/api/items/archive`,
             method: "POST",
             data: {ids: ids},
             success: function () {
@@ -136,7 +114,7 @@ $(document).ready(function () {
         ids[0] = id
 
         $.ajax({
-            url: `/business/delete`,
+            url: `/api/items/delete`,
             method: "POST",
             data: {ids: ids},
             success: function () {
@@ -147,7 +125,32 @@ $(document).ready(function () {
             }
         });
     })
-});
+
+    $('.inventory').on('click', function () {
+        if ($(this).prop('checked')) {
+            var bool = true
+            $('.inventory-categ').show()
+        }
+        else {
+            bool = false
+            $('.inventory-categ').hide()
+        }
+
+        $('.purchase, .sell').prop('checked', bool).trigger('change')
+        $('.purchase, .sell').attr('disabled', bool).trigger('change')
+    })
+
+    $('.purchase, .sell').on('change', function () {
+        var class_name = $(this).attr('class').split(' ').at(-1)
+
+        if ($(this).prop('checked')) {
+            $(`.${class_name}-div`).show()
+        }
+        else {
+            $(`.${class_name}-div`).hide()
+        }
+    })
+})
 
 var ids = []
 
@@ -160,7 +163,7 @@ function all() {
 
     $.ajax({
         type: "GET",
-        url: `/business/all`,
+        url: `/api/items/all`,
         success: function (res) {
             var records = res.records;
             console.log(records)
@@ -185,7 +188,6 @@ function all() {
 
                     var keys = ["checkbox", "code", "name", "cost_price", "sale_price", "quantity", "action"]
 
-                    
                     var action =    `
                                         <div class="d-inline-block text-nowrap">                
                                             <button class="btn" data-bs-toggle="dropdown">

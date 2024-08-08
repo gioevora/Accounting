@@ -3,9 +3,10 @@
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ContactsController;
-use App\Http\Controllers\AccountingController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\ContactsController;
+use App\Http\Controllers\User\AccountingController;
+use App\Http\Controllers\User\BusinessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,58 +19,53 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('Homepage/index');
-});
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::prefix('/contacts')->group(function () {
-    Route::get('/view', [ContactsController::class, 'index']);
-    Route::get('/search/{type}', [ContactsController::class, 'search']);
-
-    Route::get('/get-groups', [ContactsController::class, 'get_groups']);
-    Route::post('/add-group', [ContactsController::class, 'add_group']);
-
-    Route::get('/new', [ContactsController::class, 'new']);
-    Route::post('/add', [ContactsController::class, 'add']);
-
+    Route::get('/', [ContactsController::class, 'index']);
+    Route::get('/add', [ContactsController::class, 'add']);
     Route::get('/edit/{id}', [ContactsController::class, 'edit']);
-    Route::get('/get/{id}', [ContactsController::class, 'get']);
-
-    Route::post('/archive', [ContactsController::class, 'archive']);
 });
 
-
-Route::prefix('/bank')->group(function () {
-    Route::get('/accounts', [AccountingController::class, 'accounts']);
-    Route::get('/new', [AccountingController::class, 'new']);
-
-    Route::get('/transfer', [AccountingController::class, 'transfer']);
-
-    Route::get('/rules', [AccountingController::class, 'rules']);
-    Route::get('/create-rules', [AccountingController::class, 'create_rules']);
-
-    Route::get('/chart-accounts', [AccountingController::class, 'chart_accounts']);
-    Route::get('/search/{type}', [AccountingController::class, 'search']);
-    Route::post('/add', [AccountingController::class, 'add']);
-    Route::get('/get/{id}', [AccountingController::class, 'get']);
-    Route::post('/update', [AccountingController::class, 'update']);
+Route::prefix('/accounting/accounts')->group(function () {
+    Route::get('/', [AccountingController::class, 'accounts']);
 });
 
-// Business
-
-Route::prefix('/business')->group(function (){
-    Route::get('/product', [ProductController::class, 'index']);
-
-    Route::get('/invoices', function () {
-        return view('Business/Invoices');
-    });
-
-    Route::get('/all', [ProductController::class, 'all']);
-    Route::post('/add', [ProductController::class, 'add']);
-    Route::get('/get/{id}', [ProductController::class, 'get']);
-    Route::post('/update', [ProductController::class, 'update']);
-    Route::post('/archive', [ProductController::class, 'archive']);
-    Route::post('/delete', [ProductController::class, 'delete']);
+Route::prefix('/business/items')->group(function () {
+    Route::get('/', [BusinessController::class, 'items']);
 });
+
+// Route::prefix('/bank')->group(function () {
+//     Route::get('/accounts', [AccountingController::class, 'accounts']);
+//     Route::get('/new', [AccountingController::class, 'new']);
+
+//     Route::get('/transfer', [AccountingController::class, 'transfer']);
+
+//     Route::get('/rules', [AccountingController::class, 'rules']);
+//     Route::get('/create-rules', [AccountingController::class, 'create_rules']);
+
+//     Route::get('/chart-accounts', [AccountingController::class, 'chart_accounts']);
+//     Route::get('/search/{type}', [AccountingController::class, 'search']);
+//     Route::post('/add', [AccountingController::class, 'add']);
+//     Route::get('/get/{id}', [AccountingController::class, 'get']);
+//     Route::post('/update', [AccountingController::class, 'update']);
+// });
+
+// // Business
+
+// Route::prefix('/business')->group(function (){
+//     Route::get('/product', [ProductController::class, 'index']);
+
+//     Route::get('/invoices', function () {
+//         return view('Business/Invoices');
+//     });
+
+//     Route::get('/all', [ProductController::class, 'all']);
+//     Route::post('/add', [ProductController::class, 'add']);
+//     Route::get('/get/{id}', [ProductController::class, 'get']);
+//     Route::post('/update', [ProductController::class, 'update']);
+//     Route::post('/archive', [ProductController::class, 'archive']);
+//     Route::post('/delete', [ProductController::class, 'delete']);
+// });
 
 

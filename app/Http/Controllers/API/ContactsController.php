@@ -1,33 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 use App\Models\Contact as Model;
 use App\Models\Person;
-use App\Models\Address;
-use App\Models\Group;
 
 class ContactsController extends Controller
 {
-    public $ent = 'Contact';
-
-    public function index() {
-        return view('Contacts/Index');
-    }
+    public $model = 'Contact';
 
     public function search($type) {
         if ($type == "all") {
-            $where = [
-                ["status", "=", Null]
-            ];
+            $where = [["status", "=", Null]];
         }
         else if ($type == "archived") {
-            $where = [
-                ["status", "=", "Archived"]
-            ];
+            $where = [["status", "=", "Archived"]];
         }
         else {
             $type = substr_replace($type, '', -1);
@@ -46,36 +37,10 @@ class ContactsController extends Controller
         return response($data);
     }
 
-    public function get_groups() {
-        $records = Group::all();
-
-        $data = [
-            'records' => $records,
-        ];
-
-        return response($data);
-    }
-
-    public function add_group(Request $request) {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
-        $record = new Group();
-        $record->name = $request->name;
-        $record->save();
-    }
-
-    public function new() {
-        return view('Contacts/NewContacts');
-    }
-
     public function add(Request $request) {
         $request->validate([
             'name' => 'required',
         ]);
-
-        $colors = ['#2F4F4F', '#483D8B', '#1E90FF', '#9400D3', '#8FBC8F'];
 
         $record = new Model();
 
@@ -106,6 +71,8 @@ class ContactsController extends Controller
             'tax_id_num',
             'currency',
         ];
+
+        $colors = ['#2F4F4F', '#483D8B', '#1E90FF', '#9400D3', '#8FBC8F'];
 
         foreach ($keys as $key) {
             if ($key == "profile_color") {
@@ -145,14 +112,10 @@ class ContactsController extends Controller
             $person->save();
         }
 
-        return response(['msg' => "Added $this->ent"]);
+        return response(['msg' => "Added $this->model"]);
     }
 
-    public function edit() {
-        return view('Contacts/EditContacts');
-    }
-
-    public function get($id) {
+    public function edit($id) {
         $record = Model::find($id)->with('people')->first();
 
         $data = [
@@ -162,7 +125,8 @@ class ContactsController extends Controller
         return response($data);
     }
 
-    public function upd(Request $request) {
+
+    public function update(Request $request) {
         $request->validate([
             'name' => 'required',
         ]);
@@ -207,12 +171,12 @@ class ContactsController extends Controller
 
         $record->update($upd);
 
-        return response(['msg' => "Updated $this->ent"]);
+        return response(['msg' => "Updated $this->model"]);
     }
 
     public function archive(Request $request) {
         $ids = $request->ids;
         $records = Model::whereIn('id', $ids)->update(['status' => 'Archived']);
-        return response(['msg' => "Archived $this->ent"."s"]);
+        return response(['msg' => "Archived $this->model"."s"]);
     }
 }
