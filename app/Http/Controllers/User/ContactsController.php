@@ -10,12 +10,16 @@ class ContactsController extends Controller
     public function index() {
         return view('Contacts/Contacts/Index');
     }
-
+   
     public function add() {
         return view('Contacts/Contacts/Add');
     }
 
     public function edit() {
         return view('Contacts/Contacts/Edit');
+    }
+
+    public function details() {
+        return view('Contacts/Contacts/Details');
     }
 }

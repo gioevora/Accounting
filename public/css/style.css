@@ -65,6 +65,7 @@ section {
     width: 32px;
 }
 
+
 .navigation .nav-other .dropdown-menus .dropdown-list i {
     color: #ffff;
 }
@@ -140,6 +141,14 @@ section {
     align-items: center;
     margin-right: 24px;
 }
+.contact-menu .left-list{
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+}
+.contact-menu .profile {
+    width: 32px;
+}
 
 .add-contacts{
     padding: 16px;
@@ -159,6 +168,7 @@ section {
     text-align: center;
     margin-right: 7px;
 }
+
 
 
 
