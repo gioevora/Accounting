@@ -25,6 +25,8 @@ Route::prefix('/contacts')->group(function () {
     Route::get('/view/{type}', [ContactsController::class, 'index']);
     Route::get('/add', [ContactsController::class, 'add']);
     Route::get('/edit/{id}', [ContactsController::class, 'edit']);
+    Route::get('/details', [ContactsController::class, 'details']);
+
 });
 
 Route::prefix('/accounting/accounts')->group(function () {
