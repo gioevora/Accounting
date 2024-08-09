@@ -1,22 +1,23 @@
 @extends('Layouts.Layout')
 
-@section('title', 'Invoices - Xero')
+@section('title', 'Bills - Xero')
 
 @section('content')
     <nav>
         <div class="contact-menu">
             <ul class="d-flex justify-content-between">
                 <div class="main-list d-flex">
-                    <li class="contact-header">Invoices</li>
+                    <li class="contact-header">Bills</li>
                     <li class="contact-list"><a class="search-btn">All</a></li>
                     <li class="contact-list"><a class="search-btn">Draft</a></li>
-                    <li class="contact-list"><a class="search-btn">Awaiting Approval</a></li>
+                    <li class="contact-list"><a class="search-btn">Awaiting approval</a></li>
+                    <li class="contact-list"><a class="search-btn">Awaiting payment</a></li>
                     <li class="contact-list"><a class="search-btn">Paid</a></li>
                     <li class="contact-list"><a class="search-btn">Repeating</a></li>
                 </div>
                 <div class="right-list">
-                    <button class="btn btn-success me-4" onclick="location.href='/business/invoices/add'">
-                        <a class="text-light text-decoration-none">New Invoice</a>
+                    <button class="btn btn-success me-4" onclick="location.href='/business/bills/add'">
+                        <a class="text-light text-decoration-none">New Bill</a>
                     </button>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
@@ -32,32 +33,24 @@
                         <table class="table tbl-records">
                             <thead>
                                 <tr>
-                                    <th>Number</th>
-                                    <th>Ref</th>
-                                    <th></th>
-                                    <th>To</th>
+                                    <th>From</th>
+                                    <th>Status</th>
+                                    <th>Reference</th>
                                     <th>Date</th>
-                                    <th>Due Date</th>
+                                    <th>Due date</th>
                                     <th>Paid</th>
                                     <th>Due</th>
-                                    <th>Status</th>
-                                    <th>Sent</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>INV-0031</td>
-                                    <td>GB1-White</td>
-                                    <td><i class="fa-solid fa-file"></i></td>
-                                    <td>Dimples Warehouse</td>
-                                    <td>6 Aug 2024</td>
-                                    <td>20 Aug 2024</td>
-                                    <td>5.60</td>
-                                    <td>6.60</td>
-                                    <td>Draft</td>
-                                    <td>Sent</td>
-                                    <td></td>
+                                    <td>Net Connect</td>
+                                    <td><span class="badge text-bg-success p-2">Accepted</span></td>
+                                    <td>Rpt</td>
+                                    <td>02 Aug 2024</td>
+                                    <td>12 Aug 2024</td>
+                                    <td>0.00</td>
+                                    <td>54.13</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -79,5 +72,5 @@
         })
     </script>
 
-    <script src="{{ asset('js/Invoices.js') }}"></script>
+    <script src="{{ asset('js/Quotes.js') }}"></script>
 @endsection

@@ -158,7 +158,7 @@ section {
     margin-top: 24px;
 }
 
-.tbl-div .profile {
+.tbl-div .profile, .details .profile {
     display: inline;
     border-radius: 3px;
     background: #512DA8;

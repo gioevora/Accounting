@@ -15,11 +15,11 @@ class ContactsController extends Controller
         return view('Contacts/Contacts/Add');
     }
 
-    public function edit() {
-        return view('Contacts/Contacts/Edit');
-    }
-
     public function details() {
         return view('Contacts/Contacts/Details');
+    }
+
+    public function edit() {
+        return view('Contacts/Contacts/Edit');
     }
 }

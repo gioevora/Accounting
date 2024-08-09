@@ -25,6 +25,13 @@ $(document).ready(function () {
         });
     })
 
+    $(document).on("click", "tr", function () {
+        var id = ""
+        $(this).data('id') == undefined ? id = $(this).prev().data('id') : id = $(this).data('id')
+
+        location.href = `/contacts/details/${id}`
+    })
+
     $(document).on("click", ".edit-btn", function () {
         var tr = $(this).closest('tr')
         var id = ""
@@ -52,7 +59,7 @@ $(document).ready(function () {
         });
     })
 
-    $('.groups-drop .new-btn, .groups-drop .back-btn').click(function (e) { 
+    $('.groups-drop .new-btn, .groups-drop .back-btn').on("click", function () {
         var parent = '.groups-drop'
         var class_name = $(this).attr('class')
 
@@ -66,7 +73,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.groups-drop .add-btn').click(function (e) { 
+    $('.groups-drop .add-btn').on("click", function () {
         var parent = '.groups-drop'
         var name = $(`${parent} input[name=name]`).val()
 
@@ -87,7 +94,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.search-btn').click(function () { 
+    $('.search-btn').on("click", function () {
         sessionStorage.setItem("type", $(this).text().toLowerCase());
         location.href = `/contacts/view/${sessionStorage.getItem("type")}`
     });
@@ -97,14 +104,17 @@ var ids = []
 
 function start() {
     var segments = location.href.split('/')
+    var path = segments[4]
+    var param = segments[5]
 
-    if (segments[4] == "view") {
+    if (path == "view") {
         all_groups()
-        sessionStorage.setItem("type", segments[5]);
+
+        sessionStorage.setItem("type", param);
         search(sessionStorage.getItem("type"))
     }
-    else if (segments[4] == "edit") {
-        edit(segments[5])
+    else if (path == "edit") {
+        edit(param)
     }
 }
 

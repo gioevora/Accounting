@@ -1,6 +1,6 @@
 @extends('Layouts.Layout')
 
-@section('title', 'New Contact - Accounting')
+@section('title', 'New Contact - Xero')
 
 @section('content')
 

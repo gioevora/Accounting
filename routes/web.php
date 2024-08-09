@@ -25,7 +25,7 @@ Route::prefix('/contacts')->group(function () {
     Route::get('/view/{type}', [ContactsController::class, 'index']);
     Route::get('/add', [ContactsController::class, 'add']);
     Route::get('/edit/{id}', [ContactsController::class, 'edit']);
-    Route::get('/details', [ContactsController::class, 'details']);
+    Route::get('/details/{id}', [ContactsController::class, 'details']);
 
 });
 
@@ -37,7 +37,20 @@ Route::prefix('/business/items')->group(function () {
     Route::get('/', [BusinessController::class, 'items']);
 });
 
+Route::prefix('/business/invoices')->group(function () {
+    Route::get('/', [BusinessController::class, 'invoices']);
+    Route::get('/add', [BusinessController::class, 'add_invoice']);
+});
 
+Route::prefix('/business/quotes')->group(function () {
+    Route::get('/', [BusinessController::class, 'quotes']);
+    Route::get('/add', [BusinessController::class, 'add_quote']);
+});
+
+Route::prefix('/business/bills')->group(function () {
+    Route::get('/', [BusinessController::class, 'bills']);
+    Route::get('/add', [BusinessController::class, 'add_bill']);
+});
 
 
 
