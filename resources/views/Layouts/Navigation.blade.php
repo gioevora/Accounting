@@ -84,10 +84,10 @@
             <div class="dropdown">
                 <a href="#" class="btn border-0" type="button" data-bs-toggle="dropdown" data-bs-offset="0, 20">Contacts</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/contacts">All contacts</a></li>
-                    <li><a class="dropdown-item" href="#">Customers</a></li>
-                    <li><a class="dropdown-item" href="#">Suppliers</a></li>
-                    <li><a class="dropdown-item" href="#">Employees</a></li>
+                    <li><a class="dropdown-item" href="/contacts/view/all">All contacts</a></li>
+                    <li><a class="dropdown-item" href="/contacts/view/customers">Customers</a></li>
+                    <li><a class="dropdown-item" href="/contacts/view/suppliers">Suppliers</a></li>
+                    <li><a class="dropdown-item" href="/contacts/view/employees">Employees</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

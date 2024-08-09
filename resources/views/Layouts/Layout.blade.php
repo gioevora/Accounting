@@ -20,6 +20,8 @@
         <link href="/lib/DataTables/datatables.min.css" rel="stylesheet">
         <link href="/lib/DataTables/datatables.css" rel="stylesheet">
 
+        <link rel="icon" sizes="192x192" href="https://edge.xero.com/images/1.0.0/logo/xero-logo-192.png" type="image/png">
+
         <meta name="csrf-token" content="{{ csrf_token() }}">
     @show
 </head>

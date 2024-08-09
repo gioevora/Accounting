@@ -1,6 +1,6 @@
 @extends('Layouts.Layout')
 
-@section('title', 'Contacts - All - Xero')
+@section('title', 'Contacts - Xero')
 
 @section('content')
     <nav>
@@ -38,8 +38,8 @@
                     <li class="contact-list"><a>Smart lists</a></li>
                 </div>
                 <div class="right-list">
-                    <button class="btn btn-success me-4">
-                        <a href="/contacts/add" class="text-light text-decoration-none">New Contacts</a>
+                    <button class="btn btn-success me-4" onclick="location.href='/contacts/add'">
+                        <a class="text-light text-decoration-none">New Contacts</a>
                     </button>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>

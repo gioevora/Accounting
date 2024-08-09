@@ -22,7 +22,7 @@ use App\Http\Controllers\User\BusinessController;
 Route::get('/', [DashboardController::class, 'index']);
 
 Route::prefix('/contacts')->group(function () {
-    Route::get('/', [ContactsController::class, 'index']);
+    Route::get('/view/{type}', [ContactsController::class, 'index']);
     Route::get('/add', [ContactsController::class, 'add']);
     Route::get('/edit/{id}', [ContactsController::class, 'edit']);
 });
@@ -34,6 +34,10 @@ Route::prefix('/accounting/accounts')->group(function () {
 Route::prefix('/business/items')->group(function () {
     Route::get('/', [BusinessController::class, 'items']);
 });
+
+
+
+
 
 // Route::prefix('/bank')->group(function () {
 //     Route::get('/accounts', [AccountingController::class, 'accounts']);
@@ -49,23 +53,6 @@ Route::prefix('/business/items')->group(function () {
 //     Route::post('/add', [AccountingController::class, 'add']);
 //     Route::get('/get/{id}', [AccountingController::class, 'get']);
 //     Route::post('/update', [AccountingController::class, 'update']);
-// });
-
-// // Business
-
-// Route::prefix('/business')->group(function (){
-//     Route::get('/product', [ProductController::class, 'index']);
-
-//     Route::get('/invoices', function () {
-//         return view('Business/Invoices');
-//     });
-
-//     Route::get('/all', [ProductController::class, 'all']);
-//     Route::post('/add', [ProductController::class, 'add']);
-//     Route::get('/get/{id}', [ProductController::class, 'get']);
-//     Route::post('/update', [ProductController::class, 'update']);
-//     Route::post('/archive', [ProductController::class, 'archive']);
-//     Route::post('/delete', [ProductController::class, 'delete']);
 // });
 
 

@@ -44,6 +44,8 @@ class ContactsController extends Controller
 
         $record = new Model();
 
+        $colors = ['#2F4F4F', '#483D8B', '#1E90FF', '#9400D3', '#8FBC8F'];
+
         $keys = [        
             'name',
             'number',
@@ -72,8 +74,6 @@ class ContactsController extends Controller
             'currency',
         ];
 
-        $colors = ['#2F4F4F', '#483D8B', '#1E90FF', '#9400D3', '#8FBC8F'];
-
         foreach ($keys as $key) {
             if ($key == "profile_color") {
                 $record->$key = Arr::random($colors);
@@ -95,13 +95,17 @@ class ContactsController extends Controller
             $keys = [
                 'last_name',
                 'first_name',
+                'profile_color',
                 'email',
                 'ml_member',
                 'contact_id',
             ];
     
             foreach ($keys as $key) {
-                if ($key == "contact_id") {
+                if ($key == 'profile_color') {
+                    $person->$key = Arr::random($colors);
+                }
+                else if ($key == "contact_id") {
                     $person->$key = $record->id;
                 }
                 else {
@@ -115,7 +119,7 @@ class ContactsController extends Controller
         return response(['msg' => "Added $this->model"]);
     }
 
-    public function edit($id) {
+    public function get($id) {
         $record = Model::find($id)->with('people')->first();
 
         $data = [
@@ -124,7 +128,6 @@ class ContactsController extends Controller
 
         return response($data);
     }
-
 
     public function update(Request $request) {
         $request->validate([

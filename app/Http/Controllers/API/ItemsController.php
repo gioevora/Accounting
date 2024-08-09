@@ -77,7 +77,7 @@ class ItemsController extends Controller
         return response(['msg' => "Added $this->model"]);
     }
 
-    public function edit($id) {
+    public function get($id) {
         $record = Model::find($id)->with('item_details')->first();
 
         $data = [

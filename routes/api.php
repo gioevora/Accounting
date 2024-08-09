@@ -22,7 +22,7 @@ use App\Http\Controllers\API\ItemsController;
 Route::prefix('/contacts')->group(function () {
     Route::get('/search/{type}', [ContactsController::class, 'search']);
     Route::post('/add', [ContactsController::class, 'add']);
-    Route::get('/edit/{id}', [ContactsController::class, 'edit']);
+    Route::get('/get/{id}', [ContactsController::class, 'get']);
     Route::post('/archive', [ContactsController::class, 'archive']);
 });
 
@@ -34,14 +34,14 @@ Route::prefix('/groups')->group(function () {
 Route::prefix('/accounts')->group(function () {
     Route::get('/search/{type}', [AccountsController::class, 'search']);
     Route::post('/add', [AccountsController::class, 'add']);
-    Route::get('/edit/{id}', [AccountsController::class, 'edit']);
+    Route::get('/get/{id}', [AccountsController::class, 'get']);
     Route::post('/update', [AccountsController::class, 'update']);
 });
 
 Route::prefix('/items')->group(function () {
     Route::get('/all', [ItemsController::class, 'all']);
     Route::post('/add', [ItemsController::class, 'add']);
-    Route::get('/edit/{id}', [ItemsController::class, 'edit']);
+    Route::get('/get/{id}', [ItemsController::class, 'get']);
     Route::post('/update', [ItemsController::class, 'update']);
     Route::post('/archive', [ItemsController::class, 'archive']);
     Route::post('/delete', [ItemsController::class, 'delete']);

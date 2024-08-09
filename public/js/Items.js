@@ -61,7 +61,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "GET",
-            url: `/api/items/edit/${id}`,
+            url: `/api/items/get/${id}`,
             success: function (res) {
                 var record = res.record;
 

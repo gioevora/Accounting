@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use App\Models\Contact;
-
 return new class extends Migration
 {
     /**
@@ -13,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('people', function (Blueprint $table) {
+        Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('profile_color');
-            $table->string('email');
-            $table->boolean('ml_member');
-            $table->foreignIdFor(Contact::class);
+            $table->string('changes');
+            $table->dateTime('date_time');
+            $table->string('user');
+            $table->text('details');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('people');
+        Schema::dropIfExists('histories');
     }
 };

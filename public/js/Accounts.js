@@ -60,7 +60,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "GET",
-            url: `/api/accounts/edit/${id}`,
+            url: `/api/accounts/get/${id}`,
             success: function (res) {
                 var record = res.record;
 

@@ -7,11 +7,6 @@ $(document).ready(function () {
 
     start()
 
-    $('.search-btn').click(function () { 
-        var type = $(this).text().toLowerCase()
-        search(type)
-    });
-
     $('.add-form').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
@@ -22,7 +17,7 @@ $(document).ready(function () {
             processData: false,
             success: function (res) {
                 toastr.success(res.msg);
-                location.href = `/contacts`
+                location.href = `/contacts/view/${sessionStorage.getItem("type")}`
             },
             error: function (res) {
                 console.log(res)
@@ -49,7 +44,7 @@ $(document).ready(function () {
             method: "POST",
             data: {ids: ids},
             success: function () {
-                search('all')
+                search(sessionStorage.getItem("type"))
             },
             error: function (res) {
                 console.log(res)
@@ -91,18 +86,25 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.search-btn').click(function () { 
+        sessionStorage.setItem("type", $(this).text().toLowerCase());
+        location.href = `/contacts/view/${sessionStorage.getItem("type")}`
+    });
 })
 
 var ids = []
 
 function start() {
     var segments = location.href.split('/')
-    if (segments[4] == "edit") {
-        edit(segments[5])
-    }
-    else {
+
+    if (segments[4] == "view") {
         all_groups()
-        search('all')
+        sessionStorage.setItem("type", segments[5]);
+        search(sessionStorage.getItem("type"))
+    }
+    else if (segments[4] == "edit") {
+        edit(segments[5])
     }
 }
 
@@ -206,7 +208,7 @@ function search(type) {
 function edit(id) {
     $.ajax({
         type: "GET",
-        url: `/api/contacts/edit/${id}`,
+        url: `/api/contacts/get/${id}`,
         success: function (res) {
             var record = res.record;
             console.log(record)
